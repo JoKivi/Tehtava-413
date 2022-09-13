@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+  
+body {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.slot-container {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px;
+    padding: 10px;
+}
+  
+#canvas {
+    background: rgb(205, 201, 151);
+    border: 5px solid green;
+}
+  
+.slotti {
+    display: none;
+    border: 2px solid #000000;
+    background-color: bisque;
+}
