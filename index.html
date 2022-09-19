@@ -15,16 +15,30 @@
 <body>
     <div class="header">
         <h1>HEDELMÄPELI</h1>
-    </div class="container">
-    <canvas id="canvas" width="620" height="200"></canvas>
+    </div>
+    <!-- <canvas id="canvas" width="620" height="200"></canvas> -->
+
     <img src="images/7.png" alt="" class="slotti" id="img1" value="1">
     <img src="images/apple.png" alt="" class="slotti" id="img2" value="2">
     <img src="images/cherry.png" alt="" class="slotti" id="img3" value="3">
     <img src="images/melon.png" alt="" class="slotti" id="img4" value="4">
     <img src="images/pear.png" alt="" class="slotti" id="img5" value="5">
-    <img src="images/coin.png" alt="" id="coin">
+    <img src="images/coin.png" alt="" class="slotti" id="coin">
+    <div class="container">
+            <div class="slot-container">
+                <div class="ruutu"><img src="images/7.png" alt=""></div>
+                <div class="ruutu"><img src="images/7.png" alt=""></div>
+                <div class="ruutu"><img src="images/7.png" alt=""></div>
+                <div class="ruutu"><img src="images/7.png" alt=""></div>
 
-    <button onclick="pelaa()" >PELAA</button>
+                <button class="lukitse" id="lukitse1" onclick="lukitse()">LUKITSE</button>
+                <button class="lukitse" id="lukitse2" onclick="lukitse()">LUKITSE</button>
+                <button class="lukitse" id="lukitse3" onclick="lukitse()">LUKITSE</button>
+                <button class="lukitse" id="lukitse4" onclick="lukitse()">LUKITSE</button>
+        
+            </div>
+        <button id="pelaa" onclick="pelaa()" >PELAA</button>
+    </div>
     <script src="main.js"></script>
 
 </body>
