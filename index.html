@@ -16,29 +16,71 @@
     <div class="header">
         <h1>HEDELMÄPELI</h1>
     </div>
-    <!-- <canvas id="canvas" width="620" height="200"></canvas> -->
-
-    <img src="images/7.png" alt="" class="slotti" id="img1" value="1">
-    <img src="images/apple.png" alt="" class="slotti" id="img2" value="2">
-    <img src="images/cherry.png" alt="" class="slotti" id="img3" value="3">
-    <img src="images/melon.png" alt="" class="slotti" id="img4" value="4">
-    <img src="images/pear.png" alt="" class="slotti" id="img5" value="5">
-    <img src="images/coin.png" alt="" class="slotti" id="coin">
+    
     <div class="container">
-            <div class="slot-container">
-                <div class="ruutu"><img src="images/7.png" alt=""></div>
-                <div class="ruutu"><img src="images/7.png" alt=""></div>
-                <div class="ruutu"><img src="images/7.png" alt=""></div>
-                <div class="ruutu"><img src="images/7.png" alt=""></div>
-
-                <button class="lukitse" id="lukitse1" onclick="lukitse()">LUKITSE</button>
-                <button class="lukitse" id="lukitse2" onclick="lukitse()">LUKITSE</button>
-                <button class="lukitse" id="lukitse3" onclick="lukitse()">LUKITSE</button>
-                <button class="lukitse" id="lukitse4" onclick="lukitse()">LUKITSE</button>
-        
+        <div class="upper-container">
+            <div class="stats">
+                <div class="inline item1"><img id="rahaKuva" src="images/coin.png" alt="coin" width="60" height="60"></div>
+                <div class="inline item2" id="raha"></div>
+                <div class="inline item3">Panos </div>
+                <div class="inline item4" id="panos"></div>
+                <div class="inline item5"><img id="rahaKuva" src="images/coin.png" alt="coin" width="60" height="60"></div>
+    
             </div>
-        <button id="pelaa" onclick="pelaa()" >PELAA</button>
-    </div>
+                
+            <div class="voittotaulu">
+                <div>
+                    <table id="voittotaulu1">
+                        <tr>
+                            <td class="taulukko"><img src="images/7.png" alt="" width="50" height="50"><img src="images/7.png" alt="" width="50" height="50"><img src="images/7.png" alt="" width="50" height="50"><img src="images/7.png" alt="" width="50" height="50"></td>
+                            <td class="taulukko arvo" id="taulukkoPanos1"><img id="rahaKuva" src="images/coin.png" alt="coin" width="30" height="30"></td>
+                        </tr>
+                        <tr>
+                            <td class="taulukko"><img src="images/apple.png" alt="" width="50" height="50"><img src="images/apple.png" alt="" width="50" height="50"><img src="images/apple.png" alt="" width="50" height="50"><img src="images/apple.png" alt="" width="50" height="50"></td>
+                            <td class="taulukko arvo" id="taulukkoPanos2">6<img id="rahaKuva" src="images/coin.png" alt="coin" width="30" height="30"></td>
+                        </tr>
+                        <tr>
+                            <td class="taulukko"><img src="images/cherry.png" alt="" width="50" height="50"><img src="images/cherry.png" alt="" width="50" height="50"><img src="images/cherry.png" alt="" width="50" height="50"><img src="images/cherry.png" alt="" width="50" height="50"></td>
+                            <td class="taulukko arvo" id="taulukkoPanos3">5<img id="rahaKuva" src="images/coin.png" alt="coin" width="30" height="30"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table id="voittotaulu2">
+                        <tr>
+                            <td class="taulukko"><img src="images/melon.png" alt="" width="50" height="50"><img src="images/melon.png" alt="" width="50" height="50"><img src="images/melon.png" alt="" width="50" height="50"><img src="images/melon.png" alt="" width="50" height="50"></td>
+                            <td class="taulukko arvo" id="taulukkoPanos4">4<img id="rahaKuva" src="images/coin.png" alt="coin" width="30" height="30"></td>
+                        </tr>
+                        <tr>
+                            <td class="taulukko"><img src="images/pear.png" alt="" width="50" height="50"><img src="images/pear.png" alt="" width="50" height="50"><img src="images/pear.png" alt="" width="50" height="50"><img src="images/pear.png" alt="" width="50" height="50"></td>
+                            <td class="taulukko arvo" id="taulukkoPanos5">3<img id="rahaKuva" src="images/coin.png" alt="coin" width="30" height="30"></td>
+                        </tr>
+                        <tr>
+                            <td class="taulukko"><img src="images/7.png" alt="" width="50" height="50"><img src="images/7.png" alt="" width="50" height="50"><img src="images/7.png" alt="" width="50" height="50"></td>
+                            <td class="taulukko arvo" id="taulukkoPanos6">8<img id="rahaKuva" src="images/coin.png" alt="coin" width="30" height="30"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="slot-container">
+            <div class="ruutu"><img src="images/7.png" alt=""></div>
+            <div class="ruutu"><img src="images/7.png" alt=""></div>
+            <div class="ruutu"><img src="images/7.png" alt=""></div>
+            <div class="ruutu"><img src="images/7.png" alt=""></div>
+
+            <button class="lukitse" id="lukitse1" onclick="lukitse1()">LUKITSE</button>
+            <button class="lukitse" id="lukitse2" onclick="lukitse2()">LUKITSE</button>
+            <button class="lukitse" id="lukitse3" onclick="lukitse3()">LUKITSE</button>
+            <button class="lukitse" id="lukitse4" onclick="lukitse4()">LUKITSE</button>
+    
+        </div>
+            <div class="nappulat">
+                <button id="pelaa" onclick="pelaa()" >PELAA</button>
+                <button id="panosNappi" onclick="panos()">PANOS</button>
+            </div>
+        </div>
     <script src="main.js"></script>
 
 </body>
