@@ -16,6 +16,10 @@ const taulukko2Panos =[
     '3',
     '8'
 ]
+
+const locks = [0,0,0,0]
+let saaLukita = true
+
 var value1 = document.getElementById("lukitse1").value;
 var value2 = document.getElementById("lukitse2").value;
 var value3 = document.getElementById("lukitse3").value;
@@ -42,6 +46,21 @@ function pelaa() {
     } else if (raha > 0) {
         rahaaPois();
         vaihdaKuva();
+
+        if (locks[0]+locks[1]+locks[2]+locks[3] > 0){
+            
+            for (let i=0; i < locks.length; i++) {
+                if (locks[i] == 1){
+                    lukitse(i)
+                }
+            }
+
+            saaLukita = false
+            
+        } else {
+            saaLukita = true
+        }
+
     } 
 }
 
@@ -52,22 +71,41 @@ function rahaaPois() {
 
 function vaihdaKuva() {
     var kuva1 = document.querySelectorAll('.ruutu img')[0];
-        if (value1 == 0) {
+        if (locks[0] == 0) {
             kuva1.src = arvonta();
         }
     var kuva2 = document.querySelectorAll('.ruutu img')[1];
-        if (value2 == 0) {
+        if (locks[1] == 0) {
             kuva2.src = arvonta();
         }
     var kuva3 = document.querySelectorAll('.ruutu img')[2];
-        if (value3 == 0) {
+        if (locks[2] == 0) {
             kuva3.src = arvonta();
         }    
     var kuva4 = document.querySelectorAll('.ruutu img')[3];
-        if (value4 == 0) {
+        if (locks[3] == 0) {
             kuva4.src = arvonta();
         }
 }
+
+function lukitse(index){
+    
+    if (!saaLukita) {
+        return
+    }
+
+    const lockButtons = document.querySelectorAll('.lukitse')
+
+    if (locks[index] == 0) {
+        locks[index] = 1
+        lockButtons[index].style.color = "white";
+    } else {
+        locks[index] = 0
+        lockButtons[index].style.color = "black";
+    }
+
+}
+
 
 function lukitse1() {
     value1 = 1-value1;
