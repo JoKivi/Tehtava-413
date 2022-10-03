@@ -6,10 +6,12 @@ const images = [
     'pear.png',
     'cherry.png'
 ]
-const taulukkoPanos = [
+const taulukko1Panos = [
     '10',
-    '5',
-    '5',
+    '6',
+    '5'
+]
+const taulukko2Panos =[
     '4',
     '3',
     '8'
@@ -23,15 +25,6 @@ var panosNyt = 1;
 
 document.getElementById("raha").innerHTML = raha;
 document.getElementById("panos").innerHTML = panosNyt;
-var e= document.querySelectorAll(".arvo");
-
-var html = "<table><tr>";
-for (let i = 0; i < taulukkoPanos.length; i++) {
-    html = `<td>${taulukkoPanos[i]}</td>` ;
-}
-html += "</tr></table>";
-
-document.getElementById("voittoruutu1").innerHTML = html;
 
 vaihdaKuva();
 
@@ -119,5 +112,20 @@ function panos() {
     }
     panosNyt += 1;
     document.getElementById("panos").innerHTML = panosNyt;
+    taulukonKerroin(panosNyt);
 }
 
+function taulukonKerroin(panosNyt) {
+    for (let i = 0; i < 3; i++) {
+        console.log(panosNyt);
+        var tauluPanos1 = taulukko1Panos[i];
+        tauluPanos1 *= panosNyt;
+        console.log("tämä on taulukolle "+tauluPanos1);
+        document.getElementById("voittotaulu1").rows[i].cells.item(1).innerHTML = tauluPanos1;
+
+        var tauluPanos2 = taulukko2Panos[i];
+        tauluPanos2 *= panosNyt;
+        console.log("tämä on taulukolle "+tauluPanos2);
+        document.getElementById("voittotaulu2").rows[i].cells.item(1).innerHTML = tauluPanos2;
+    }
+}
