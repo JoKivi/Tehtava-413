@@ -64,7 +64,7 @@ function pelaa() {
 }
 
 function rahaaPois() {
-    raha -= panosNyt;
+    // raha -= panosNyt;
     document.getElementById("raha").innerHTML = raha;
 }
 
