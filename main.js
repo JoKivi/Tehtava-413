@@ -6,6 +6,12 @@ const images = [
     'pear.png',
     'cherry.png'
 ]
+
+var kuva1 = document.querySelectorAll('.ruutu img')[0];
+var kuva2 = document.querySelectorAll('.ruutu img')[1];
+var kuva3 = document.querySelectorAll('.ruutu img')[2];
+var kuva4 = document.querySelectorAll('.ruutu img')[3];
+
 const taulukko1Panos = [
     '10',
     '6',
@@ -19,11 +25,6 @@ const taulukko2Panos =[
 
 const locks = [0,0,0,0]
 let saaLukita = true
-
-var value1 = document.getElementById("lukitse1").value;
-var value2 = document.getElementById("lukitse2").value;
-var value3 = document.getElementById("lukitse3").value;
-var value4 = document.getElementById("lukitse4").value;
 var raha = 50; 
 var panosNyt = 1;
 
@@ -46,22 +47,9 @@ function pelaa() {
     } else if (raha > 0) {
         rahaaPois();
         vaihdaKuva();
-
-        if (locks[0]+locks[1]+locks[2]+locks[3] > 0){
-            
-            for (let i=0; i < locks.length; i++) {
-                if (locks[i] == 1){
-                    lukitse(i)
-                }
-            }
-
-            saaLukita = false
-            
-        } else {
-            saaLukita = true
-        }
-
-    } 
+        lukituksenTarkistus();
+        voitto4();
+    }
 }
 
 function rahaaPois() {
@@ -70,23 +58,38 @@ function rahaaPois() {
 }
 
 function vaihdaKuva() {
-    var kuva1 = document.querySelectorAll('.ruutu img')[0];
-        if (locks[0] == 0) {
-            kuva1.src = arvonta();
-        }
-    var kuva2 = document.querySelectorAll('.ruutu img')[1];
-        if (locks[1] == 0) {
-            kuva2.src = arvonta();
-        }
-    var kuva3 = document.querySelectorAll('.ruutu img')[2];
-        if (locks[2] == 0) {
-            kuva3.src = arvonta();
-        }    
-    var kuva4 = document.querySelectorAll('.ruutu img')[3];
-        if (locks[3] == 0) {
-            kuva4.src = arvonta();
-        }
+    if (locks[0]==0) {kuva1.src = arvonta();}
+    if (locks[1]==0) {kuva2.src = arvonta();}
+    if (locks[2]==0) {kuva3.src = arvonta();}
+    if (locks[3]==0) {kuva4.src = arvonta();}
 }
+
+function voitto4() {
+    if (kuva1.isEqualNode(kuva2, kuva3, kuva4)) {
+        if (kuva1) {
+            
+        }
+    } else {
+        console.log("EI")
+    }
+
+
+}
+
+function lukituksenTarkistus() {
+    if (locks[0]+locks[1]+locks[2]+locks[3] > 0){
+            
+        for (let i=0; i < locks.length; i++) {
+            if (locks[i] == 1){
+                lukitse(i)
+            }
+        }
+
+        saaLukita = false
+    } else {
+        saaLukita = true
+    }
+} 
 
 function lukitse(index){
     
@@ -94,54 +97,18 @@ function lukitse(index){
         return
     }
 
-    const lockButtons = document.querySelectorAll('.lukitse')
+    const lockButtons = document.querySelectorAll('.lukitse');
 
     if (locks[index] == 0) {
         locks[index] = 1
         lockButtons[index].style.color = "white";
+        lockButtons[index].innerHTML = "LUKITTU";
     } else {
         locks[index] = 0
         lockButtons[index].style.color = "black";
+        lockButtons[index].innerHTML = "LUKITSE";
     }
 
-}
-
-
-function lukitse1() {
-    value1 = 1-value1;
-    if (value1 === 1) {
-        document.getElementById("lukitse1").style.color = "white";
-    } else {
-        document.getElementById("lukitse1").style.color = "black";
-    }
-    return value1;
-}
-function lukitse2() {
-    value2 = 1-value2;
-    if (value2 === 1) {
-        document.getElementById("lukitse2").style.color = "white";
-    } else {
-        document.getElementById("lukitse2").style.color = "black";
-    }
-    return value2;
-}
-function lukitse3() {
-    value3 = 1-value3;
-    if (value3 === 1) {
-        document.getElementById("lukitse3").style.color = "white";
-    } else {
-        document.getElementById("lukitse3").style.color = "black";
-    }
-    return value3;
-}
-function lukitse4() {
-    value4 = 1-value4;
-    if (value4 === 1) {
-        document.getElementById("lukitse4").style.color = "white";
-    } else {
-        document.getElementById("lukitse4").style.color = "black";
-    }
-    return value4;
 }
 
 function panos() {
@@ -155,15 +122,12 @@ function panos() {
 
 function taulukonKerroin(panosNyt) {
     for (let i = 0; i < 3; i++) {
-        console.log(panosNyt);
         var tauluPanos1 = taulukko1Panos[i];
         tauluPanos1 *= panosNyt;
-        console.log("tämä on taulukolle "+tauluPanos1);
         document.getElementById("voittotaulu1").rows[i].cells.item(1).innerHTML = tauluPanos1;
 
         var tauluPanos2 = taulukko2Panos[i];
         tauluPanos2 *= panosNyt;
-        console.log("tämä on taulukolle "+tauluPanos2);
         document.getElementById("voittotaulu2").rows[i].cells.item(1).innerHTML = tauluPanos2;
     }
 }
