@@ -41,12 +41,11 @@ document.getElementById("raha").innerHTML = raha;
 document.getElementById("panos").innerHTML = panosNyt;
 
 vaihdaKuva();
-console.table(voittolinjat);
 
-function arvonta(index) {
+function arvonta(indevoittoteksti) {
     let num = Math.floor(Math.random() * 5);
     let image = imagesPath + images[num];
-    slots[index] = num;
+    slots[indevoittoteksti] = num;
     return image;
 }
 
@@ -64,7 +63,7 @@ function pelaa() {
 }
 
 function rahaaPois() {
-    // raha -= panosNyt;
+    raha -= panosNyt;
     document.getElementById("raha").innerHTML = raha;
 }
 
@@ -80,21 +79,18 @@ function voitto() {
     console.log(line)
 
     if (voittolinjat.has(line)) {
-        
-
+        let tulo = voittolinjat.get(line)*panosNyt;
+        raha += tulo;
+        voittotekstiNakyy(tulo);
+        console.log(tulo)
     } else if (kuva2.isEqualNode(kuva3)&&kuva2.isEqualNode(kuva4)) {
         if (kuva2.src.lastIndexOf("seiska") >0) {
-            console.log(raha);
             raha += taulukko2Panos[2]*panosNyt;
-            console.log(raha);
-            document.getElementById("raha").innerHTML = raha;
-
+            console.log(taulukko2Panos[2]*panosNyt)
+            voittotekstiNakyy(taulukko2Panos[2]*panosNyt);
         }
-    } else {
-        console.log("EI Voittoa")
     }
-
-
+    document.getElementById("raha").innerHTML = raha;
 }
 
 function lukituksenTarkistus() {
@@ -112,7 +108,7 @@ function lukituksenTarkistus() {
     }
 } 
 
-function lukitse(index){
+function lukitse(indevoittoteksti){
     
     if (!saaLukita) {
         return
@@ -120,14 +116,14 @@ function lukitse(index){
 
     const lockButtons = document.querySelectorAll('.lukitse');
 
-    if (locks[index] == 0) {
-        locks[index] = 1
-        lockButtons[index].style.color = "white";
-        lockButtons[index].innerHTML = "LUKITTU";
+    if (locks[indevoittoteksti] == 0) {
+        locks[indevoittoteksti] = 1
+        lockButtons[indevoittoteksti].style.color = "white";
+        lockButtons[indevoittoteksti].innerHTML = "LUKITTU";
     } else {
-        locks[index] = 0
-        lockButtons[index].style.color = "black";
-        lockButtons[index].innerHTML = "LUKITSE";
+        locks[indevoittoteksti] = 0
+        lockButtons[indevoittoteksti].style.color = "black";
+        lockButtons[indevoittoteksti].innerHTML = "LUKITSE";
     }
 
 }
@@ -150,5 +146,16 @@ function taulukonKerroin(panosNyt) {
         var tauluPanos2 = taulukko2Panos[i];
         tauluPanos2 *= panosNyt;
         document.getElementById("voittotaulu2").rows[i].cells.item(1).innerHTML = tauluPanos2;
+    }
+}
+
+function voittotekstiNakyy(raha) {
+    let voittoteksti = document.getElementById("voittoteksti");
+    if (voittoteksti.style.visibility = "hidden") {
+        voittoteksti.innerHTML = "VOITIT "+ raha;
+        voittoteksti.style.visibility = "visible"
+        setTimeout(() => {
+            voittoteksti.style.visibility = "hidden";
+        }, 2000);
     }
 }
